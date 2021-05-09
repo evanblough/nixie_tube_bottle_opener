@@ -9,6 +9,7 @@ main.obj: /home/evan/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include
 main.obj: /home/evan/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/sys/cdefs.h
 main.obj: /home/evan/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/machine/_types.h
 main.obj: /home/evan/sw_dev/bottle_opener_nixie_tube/nixie_tube_bottle_opener/gpio.h
+main.obj: /home/evan/sw_dev/bottle_opener_nixie_tube/nixie_tube_bottle_opener/util.h
 
 ../main.c: 
 /home/evan/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/stdio.h: 
@@ -19,3 +20,4 @@ main.obj: /home/evan/sw_dev/bottle_opener_nixie_tube/nixie_tube_bottle_opener/gp
 /home/evan/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/sys/cdefs.h: 
 /home/evan/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/include/machine/_types.h: 
 /home/evan/sw_dev/bottle_opener_nixie_tube/nixie_tube_bottle_opener/gpio.h: 
+/home/evan/sw_dev/bottle_opener_nixie_tube/nixie_tube_bottle_opener/util.h: 
