@@ -1,17 +1,17 @@
 ******************************************************************************
                   TI ARM Linker Unix v20.2.4                   
 ******************************************************************************
->> Linked Sun May  9 18:14:36 2021
+>> Linked Wed May 12 21:10:31 2021
 
 OUTPUT FILE NAME:   <nixie_tube_bottle_opener.out>
-ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000371
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 000004c5
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00040000  000003f0  0003fc10  R  X
+  FLASH                 00000000   00040000  0000057c  0003fa84  R  X
   SRAM                  20000000   00008000  00000200  00007e00  RW X
 
 
@@ -19,10 +19,10 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    000003f0   000003f0    r-x
+00000000    00000000    0000057c   0000057c    r-x
   00000000    00000000    0000026c   0000026c    r-- .intvecs
-  0000026c    0000026c    00000144   00000144    r-x .text
-  000003b0    000003b0    00000040   00000040    r-- .const
+  0000026c    0000026c    00000298   00000298    r-x .text
+  00000504    00000504    00000078   00000078    r-- .const
 20000000    20000000    00000200   00000000    rw-
   20000000    20000000    00000200   00000000    rw- .stack
 
@@ -35,17 +35,19 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    0000026c     
                   00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
 
-.text      0    0000026c    00000144     
-                  0000026c    000000a4     gpio.obj (.text)
-                  00000310    00000060     main.obj (.text)
-                  00000370    0000002c     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
-                  0000039c    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
-                  000003a8    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
-                  000003ac    00000004                                   : exit.c.obj (.text:abort:abort)
+.text      0    0000026c    00000298     
+                  0000026c    000000dc     flash.obj (.text)
+                  00000348    000000d8     main.obj (.text)
+                  00000420    000000a4     gpio.obj (.text)
+                  000004c4    0000002c     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
+                  000004f0    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  000004fc    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00000500    00000004                                   : exit.c.obj (.text:abort:abort)
 
-.const     0    000003b0    00000040     
-                  000003b0    00000028     gpio.obj (.const)
-                  000003d8    00000018     gpio.obj (.const:GPIO_BASE)
+.const     0    00000504    00000078     
+                  00000504    00000038     flash.obj (.const)
+                  0000053c    00000028     gpio.obj (.const)
+                  00000564    00000018     gpio.obj (.const:GPIO_BASE)
 
 .cinit     0    00000000    00000000     UNINITIALIZED
 
@@ -65,10 +67,11 @@ MODULE SUMMARY
        ------                         ----   -------   -------
     ./
        tm4c123gh6pm_startup_ccs.obj   12     620       0      
+       flash.obj                      220    56        0      
        gpio.obj                       164    64        0      
-       main.obj                       96     0         0      
+       main.obj                       216    0         0      
     +--+------------------------------+------+---------+---------+
-       Total:                         272    684       0      
+       Total:                         612    740       0      
                                                               
     /home/evan/ti/ccs1020/ccs/tools/compiler/ti-cgt-arm_20.2.4.LTS/lib/rtsv7M4_T_le_v4SPD16_eabi.lib
        boot_cortex_m.c.obj            44     0         0      
@@ -79,84 +82,116 @@ MODULE SUMMARY
                                                               
        Stack:                         0      0         512    
     +--+------------------------------+------+---------+---------+
-       Grand Total:                   324    684       512    
+       Grand Total:                   664    740       512    
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
-address   name                   
--------   ----                   
-000003ad  C$$EXIT                
-000003d0  GPIO_AFSL_OFFSET       
-000003b4  GPIO_A_BASE            
-000003d8  GPIO_BASE              
-000003b8  GPIO_B_BASE            
-000003b0  GPIO_CLOCK_BASE_REG    
-000003bc  GPIO_C_BASE            
-000003d4  GPIO_DEN_OFFSET        
-000003cc  GPIO_DIR_OFFSET        
-000003c0  GPIO_D_BASE            
-000003c4  GPIO_E_BASE            
-000003c8  GPIO_F_BASE            
-0000039d  ResetISR               
-20000200  __STACK_END            
-00000200  __STACK_SIZE           
-20000200  __STACK_TOP            
-ffffffff  __TI_pprof_out_hndl    
-ffffffff  __TI_prof_data_size    
-ffffffff  __TI_prof_data_start   
-00000000  __TI_static_base__     
-ffffffff  __binit__              
-ffffffff  __c_args__             
-UNDEFED   __mpu_init             
-20000000  __stack                
-20000000  __start___llvm_prf_cnts
-20000000  __stop___llvm_prf_cnts 
-00000371  _c_int00_noinit_noargs 
-000003a9  _system_pre_init       
-000003ad  abort                  
-ffffffff  binit                  
-00000000  g_pfnVectors           
-000002a1  initialize_gpio_dout   
-00000349  main                   
+address   name                       
+-------   ----                       
+00000530  BOOTCFG_KEY_BITMASK        
+00000538  BOOTCFG_KEY_VAL_FALSE      
+00000534  BOOTCFG_KEY_VAL_TRUE       
+00000524  BOOTCFG_OFFSET             
+00000501  C$$EXIT                    
+00000504  FLASH_BASE_REG             
+0000051c  FLASH_CTL_ERASE_MEM_BITMASK
+00000518  FLASH_CTL_WRITE_MEM_BITMASK
+0000050c  FLASH_MEM_ADDR_OFFSET      
+00000514  FLASH_MEM_CTL_OFFSET       
+00000510  FLASH_MEM_DATA_OFFSET      
+0000052c  FLASH_MEM_PROG_ENABLE      
+00000528  FLASH_MEM_READ_ENABLE      
+0000055c  GPIO_AFSL_OFFSET           
+00000540  GPIO_A_BASE                
+00000564  GPIO_BASE                  
+00000544  GPIO_B_BASE                
+0000053c  GPIO_CLOCK_BASE_REG        
+00000548  GPIO_C_BASE                
+00000560  GPIO_DEN_OFFSET            
+00000558  GPIO_DIR_OFFSET            
+0000054c  GPIO_D_BASE                
+00000550  GPIO_E_BASE                
+00000554  GPIO_F_BASE                
+00000520  MEM_SYSCTL_PROT_REG_BASE   
+000004f1  ResetISR                   
+00000508  USER_FLASH_BASE_ADDR       
+20000200  __STACK_END                
+00000200  __STACK_SIZE               
+20000200  __STACK_TOP                
+ffffffff  __TI_pprof_out_hndl        
+ffffffff  __TI_prof_data_size        
+ffffffff  __TI_prof_data_start       
+00000000  __TI_static_base__         
+ffffffff  __binit__                  
+ffffffff  __c_args__                 
+UNDEFED   __mpu_init                 
+20000000  __stack                    
+20000000  __start___llvm_prf_cnts    
+20000000  __stop___llvm_prf_cnts     
+000004c5  _c_int00_noinit_noargs     
+000004fd  _system_pre_init           
+00000501  abort                      
+ffffffff  binit                      
+000002e5  erase_flash_page           
+00000000  g_pfnVectors               
+00000455  initialize_gpio_dout       
+00000393  main                       
+0000027f  write_value_to_flash       
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
 
-address   name                   
--------   ----                   
-00000000  __TI_static_base__     
-00000000  g_pfnVectors           
-00000200  __STACK_SIZE           
-000002a1  initialize_gpio_dout   
-00000349  main                   
-00000371  _c_int00_noinit_noargs 
-0000039d  ResetISR               
-000003a9  _system_pre_init       
-000003ad  C$$EXIT                
-000003ad  abort                  
-000003b0  GPIO_CLOCK_BASE_REG    
-000003b4  GPIO_A_BASE            
-000003b8  GPIO_B_BASE            
-000003bc  GPIO_C_BASE            
-000003c0  GPIO_D_BASE            
-000003c4  GPIO_E_BASE            
-000003c8  GPIO_F_BASE            
-000003cc  GPIO_DIR_OFFSET        
-000003d0  GPIO_AFSL_OFFSET       
-000003d4  GPIO_DEN_OFFSET        
-000003d8  GPIO_BASE              
-20000000  __stack                
-20000000  __start___llvm_prf_cnts
-20000000  __stop___llvm_prf_cnts 
-20000200  __STACK_END            
-20000200  __STACK_TOP            
-ffffffff  __TI_pprof_out_hndl    
-ffffffff  __TI_prof_data_size    
-ffffffff  __TI_prof_data_start   
-ffffffff  __binit__              
-ffffffff  __c_args__             
-ffffffff  binit                  
-UNDEFED   __mpu_init             
+address   name                       
+-------   ----                       
+00000000  __TI_static_base__         
+00000000  g_pfnVectors               
+00000200  __STACK_SIZE               
+0000027f  write_value_to_flash       
+000002e5  erase_flash_page           
+00000393  main                       
+00000455  initialize_gpio_dout       
+000004c5  _c_int00_noinit_noargs     
+000004f1  ResetISR                   
+000004fd  _system_pre_init           
+00000501  C$$EXIT                    
+00000501  abort                      
+00000504  FLASH_BASE_REG             
+00000508  USER_FLASH_BASE_ADDR       
+0000050c  FLASH_MEM_ADDR_OFFSET      
+00000510  FLASH_MEM_DATA_OFFSET      
+00000514  FLASH_MEM_CTL_OFFSET       
+00000518  FLASH_CTL_WRITE_MEM_BITMASK
+0000051c  FLASH_CTL_ERASE_MEM_BITMASK
+00000520  MEM_SYSCTL_PROT_REG_BASE   
+00000524  BOOTCFG_OFFSET             
+00000528  FLASH_MEM_READ_ENABLE      
+0000052c  FLASH_MEM_PROG_ENABLE      
+00000530  BOOTCFG_KEY_BITMASK        
+00000534  BOOTCFG_KEY_VAL_TRUE       
+00000538  BOOTCFG_KEY_VAL_FALSE      
+0000053c  GPIO_CLOCK_BASE_REG        
+00000540  GPIO_A_BASE                
+00000544  GPIO_B_BASE                
+00000548  GPIO_C_BASE                
+0000054c  GPIO_D_BASE                
+00000550  GPIO_E_BASE                
+00000554  GPIO_F_BASE                
+00000558  GPIO_DIR_OFFSET            
+0000055c  GPIO_AFSL_OFFSET           
+00000560  GPIO_DEN_OFFSET            
+00000564  GPIO_BASE                  
+20000000  __stack                    
+20000000  __start___llvm_prf_cnts    
+20000000  __stop___llvm_prf_cnts     
+20000200  __STACK_END                
+20000200  __STACK_TOP                
+ffffffff  __TI_pprof_out_hndl        
+ffffffff  __TI_prof_data_size        
+ffffffff  __TI_prof_data_start       
+ffffffff  __binit__                  
+ffffffff  __c_args__                 
+ffffffff  binit                      
+UNDEFED   __mpu_init                 
 
-[33 symbols]
+[49 symbols]
