@@ -31,6 +31,7 @@ static inline unsigned gpio_letter_to_bitmask_val(char gpio_letter) { return gpi
 static inline unsigned pin_number_to_bitmask_val(unsigned pin) { return 0x1u << pin; } ;
 
 void initialize_gpio_dout (char gpio_letter, int pin_number);
+void initialize_gpio_din (char gpio_letter, int pin_number);
 
 //Bit Banding
 //1. gpio_letter {'a'-'f'}
@@ -38,6 +39,9 @@ void initialize_gpio_dout (char gpio_letter, int pin_number);
 //3. value  {0x1 - 0xFF} "Bitmask correlating to what you want the changed pin values to be"
 static inline void set_gpio_output(char gpio_letter, unsigned pin_bitmask, unsigned value) {
     *((unsigned *)((unsigned)GPIO_BASE[gpio_letter - 'a'] | pin_bitmask << 2)) = value;
+}
+static inline unsigned get_gpio_input(char gpio_letter, unsigned pin_bitmask, unsigned value) {
+    return *((unsigned *)((unsigned)GPIO_BASE[gpio_letter - 'a'] | pin_bitmask << 2));
 }
 
 #endif /* GPIO_H_ */
