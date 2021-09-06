@@ -11,5 +11,4 @@
 
 static inline unsigned * offset_reg (unsigned base, unsigned offset) { return (unsigned *) (base | offset); };
 
-
 #endif /* UTIL_H_ */
