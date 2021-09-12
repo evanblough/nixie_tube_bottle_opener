@@ -2,6 +2,7 @@
 #include <gpio.h>
 #include <util.h>
 #include <flash.h>
+#include <timer.h>
 
 //Config
 
@@ -20,6 +21,7 @@ static int k155id1_bcd_input_end_pin = 3;
 int main(void)
 {
 //**************************Init***********************************************//
+    /*
     //Initialize GPIO B-D, Pins (0-3) to low
     //These are the pin blocks use to drive the logical input to the k155id1 decoder IC
     int k155id1_bcd_input_pin = k155id1_bcd_input_begin_pin;
@@ -40,7 +42,13 @@ int main(void)
             set_gpio_output(gpio_char,0x0F,i);
         }
     }
+    */
     //Load count from flash
+    //erase_flash_page(USER_FLASH_BASE_ADDR);
+    //write_value_to_flash(0x10, USER_FLASH_BASE_ADDR);
+    //unsigned flash_value = *(volatile unsigned *)(offset_reg(USER_FLASH_BASE_ADDR, 0x0));
+
+
 
 //**************************Main Loop*****************************************//
 
@@ -55,7 +63,14 @@ int main(void)
     write_value_to_flash(0x30, USER_FLASH_BASE_ADDR);
     temp = *offset_reg(USER_FLASH_BASE_ADDR, 0x0);
 */
-	while(1);
+    initialize_gpio_dout('b', 2);
+
+	while(1){
+	    set_gpio_output('b', pin_number_to_bitmask_val(2), 0);
+	    poll_timer(1);
+        set_gpio_output('b', pin_number_to_bitmask_val(2), pin_number_to_bitmask_val(2));
+        poll_timer(1);
+	}
 	
 	return 0;
 }

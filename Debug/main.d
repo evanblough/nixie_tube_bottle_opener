@@ -11,6 +11,7 @@ main.obj: /home/evan/ti/ccs1040/ccs/tools/compiler/ti-cgt-arm_20.2.5.LTS/include
 main.obj: /home/evan/sw_dev/nixie_tube_bottle_opener/gpio.h
 main.obj: /home/evan/sw_dev/nixie_tube_bottle_opener/util.h
 main.obj: /home/evan/sw_dev/nixie_tube_bottle_opener/flash.h
+main.obj: /home/evan/sw_dev/nixie_tube_bottle_opener/timer.h
 
 ../main.c:
 
@@ -33,4 +34,6 @@ main.obj: /home/evan/sw_dev/nixie_tube_bottle_opener/flash.h
 /home/evan/sw_dev/nixie_tube_bottle_opener/util.h:
 
 /home/evan/sw_dev/nixie_tube_bottle_opener/flash.h:
+
+/home/evan/sw_dev/nixie_tube_bottle_opener/timer.h:
 

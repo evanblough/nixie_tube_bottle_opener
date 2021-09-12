@@ -9,6 +9,6 @@
 #define UTIL_H_
 
 
-static inline unsigned * offset_reg (unsigned base, unsigned offset) { return (unsigned *) (base | offset); };
+static inline volatile unsigned * offset_reg (unsigned base, unsigned offset) { return (volatile unsigned *) (base | offset); };
 
 #endif /* UTIL_H_ */
